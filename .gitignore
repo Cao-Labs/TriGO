@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Editors
+.vscode/
+.idea/
+
+# Data and pretrained models
+data/
+datasets/
+pretrained/
+*.xlsx
+*.pdb
+
+# Features and model weights
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+protein_feature_cache/
+
+# Experiment outputs
+outputs/
+output*/
+checkpoints/
+runs/
+wandb/
+logs/
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
