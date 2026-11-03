@@ -36,6 +36,11 @@ TriGO/
   assets/
     trigo_framework.png        framework displayed in README
     trigo_framework.pdf        vector version of the framework
+  data/                         released FASTA sequences and GO-annotation TSV files
+    cafa3/                      fixed CAFA3 train/validation/test splits
+    goa/                        fixed temporal GOA splits
+    cafa5/                      fixed feature-available CAFA5 splits
+    manifest.tsv                file counts and SHA-256 checksums
   train_model.py                 training and component-ablation entry point
   test_model.py                  checkpoint evaluation
   predict.py                     prediction for cached features or new PDB files
@@ -56,7 +61,17 @@ TriGO/
   ABLATIONS.md
 ```
 
-Only source code, documentation, and framework assets are included. Data, pretrained weights, cached features, checkpoints, and experiment outputs must be stored separately.
+The repository includes the processed FASTA sequences, GO-annotation TSV files, and fixed split assignments used in the experiments. PDB structures, ontology snapshots, pretrained weights, cached features, checkpoints, and experiment outputs must be obtained or generated separately.
+
+## Data sources
+
+The reported experiments use three data sources:
+
+- **CAFA3:** the CAFA3 benchmark split from the [official CAFA resource](https://biofunctionprediction.org/cafa/). The provided training, validation, and test partitions are preserved.
+- **GOA:** a temporal benchmark constructed from archived [UniProt-GOA](https://www.ebi.ac.uk/GOA/downloads.html) annotations and [UniProt](https://www.ebi.ac.uk/uniprot/download-center) sequences. Only experimentally supported annotations are retained; the split uses 1 January 2023 as the temporal cutoff and applies homology filtering.
+- **CAFA5:** the official [CAFA5 Protein Function Prediction](https://www.kaggle.com/competitions/cafa-5-protein-function-prediction/data) training sequences and annotations. The downloaded data are modified by dataset splitting, overlap removal, ontology propagation, label-frequency filtering, and structure-availability filtering.
+
+Protein structures are taken from the accompanying CAFA3 structure archive or retrieved by UniProt accession from the [AlphaFold Protein Structure Database](https://alphafold.ebi.ac.uk/). Processed sequences, annotations, and split assignments are provided under [`data/`](data/); raw source files and structures are not redistributed. Exact sources, preprocessing rules, and file formats are documented in [DATA.md](DATA.md) and [`data/README.md`](data/README.md).
 
 ## Installation
 
@@ -78,6 +93,14 @@ python scripts/smoke_test.py
 ```
 
 ## Prepare inputs
+
+Reconstruct the annotation workbook expected by the training interface from the released FASTA and TSV files:
+
+```bash
+python scripts/build_annotation_workbook.py \
+  --data-dir data/cafa3 \
+  --output data/cafa3/annotations.xlsx
+```
 
 The annotation workbook requires `Entry`, `Sequence`, and `Gene Ontology IDs` columns; an optional `Split` column can define train, validation, and test partitions. PDB files are named `{Entry}.pdb`. See [DATA.md](DATA.md) for the complete schema.
 

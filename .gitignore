@@ -10,7 +10,23 @@ venv/
 .idea/
 
 # Data and pretrained models
-data/
+# Only the public FASTA/TSV release under data/ is tracked. Large structures,
+# ontologies, generated workbooks, embeddings, and feature caches stay local.
+data/*
+!data/README.md
+!data/manifest.tsv
+!data/cafa3/
+!data/goa/
+!data/cafa5/
+data/cafa3/*
+data/goa/*
+data/cafa5/*
+!data/cafa3/*.fasta
+!data/cafa3/*.tsv
+!data/goa/*.fasta
+!data/goa/*.tsv
+!data/cafa5/*.fasta
+!data/cafa5/*.tsv
 datasets/
 pretrained/
 *.xlsx
