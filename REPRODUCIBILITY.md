@@ -21,4 +21,4 @@ All three reported-dataset configurations enable `--require-split`. Training ter
 
 Exact floating-point results can vary with the GPU, CUDA, PyTorch, AMP, and driver versions. Use the same data partitions and cached ESM representations when comparing architectural variants. The five component variants are defined in `ABLATIONS.md`; change only the intended component while preserving the corresponding dataset configuration.
 
-The repository does not include dataset files, ESM weights, cached protein features, trained checkpoints, or paper output directories.
+The repository includes the processed FASTA sequences, GO-annotation TSV files, and fixed split assignments. It does not include PDB structures, ontology snapshots, pretrained ESM-2 weights, cached protein features, GO embeddings, trained checkpoints, or experiment outputs.
