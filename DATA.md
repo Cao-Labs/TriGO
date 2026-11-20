@@ -41,6 +41,24 @@ Exact sequence matches to the CAFA3 and GOA datasets are excluded. Structures ar
 
 After feature-availability filtering, the released CAFA5 split contains 22,882 training, 2,532 validation, and 2,729 test proteins. These are the same proteins used for the reported TriGO evaluation, including the common 2,729-protein test set.
 
+## GO ontology files
+
+| Dataset | GO release in the archive | Archive | File read by the training script |
+| --- | --- | --- | --- |
+| CAFA3 | 2016-01-16 | [`data/cafa3/go-basic.obo.gz`](data/cafa3/go-basic.obo.gz) | `data/cafa3/go-basic.obo` |
+| GOA | 2026-03-25 | [`data/goa/go-basic.obo.gz`](data/goa/go-basic.obo.gz) | `data/goa/go-basic.obo` |
+| CAFA5-derived | 2023-01-01 | [`data/cafa5/go-basic.obo.gz`](data/cafa5/go-basic.obo.gz) | `data/cafa5/go-basic.obo` |
+
+From the repository root, extract the archive for the dataset you plan to use:
+
+```bash
+gunzip -k data/cafa3/go-basic.obo.gz
+gunzip -k data/goa/go-basic.obo.gz
+gunzip -k data/cafa5/go-basic.obo.gz
+```
+
+Each command creates `go-basic.obo` beside its archive and keeps the compressed copy. Use that dataset's extracted file for both GO embedding generation and training.
+
 ## PDB structure downloads
 
 Download `goa_pdb.rar` and `cafa5_derived_pdb.rar` from the [Zenodo record](https://zenodo.org/records/24328142) (DOI [10.5281/zenodo.24328142](https://doi.org/10.5281/zenodo.24328142)). Extract the PDB files into `data/goa/pdb/` and `data/cafa5/pdb/`, respectively. For CAFA3, use `afdb_dir_cafa3.tar.gz` from the [PredGO data release](https://doi.org/10.1093/bib/bbad243) and place its PDB files in `data/cafa3/pdb/`.
