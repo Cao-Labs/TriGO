@@ -1,6 +1,6 @@
 # Data sources, construction, and input format
 
-The processed sequences, propagated GO annotations, and fixed split assignments used by TriGO are released as FASTA and TSV files under [`data/`](data/). The PDB archives are distributed separately as described below. Obtain ontology snapshots and pretrained weights from their original providers and retain the provider's license and attribution information.
+The processed sequences, propagated GO annotations, and fixed split assignments used by TriGO are released as FASTA and TSV files under [`data/`](data/). Each dataset directory also contains a compressed GO ontology. Obtain PDB archives from the sources below and pretrained weights from their original providers.
 
 ## Reported datasets
 
