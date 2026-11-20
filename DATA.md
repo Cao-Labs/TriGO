@@ -1,12 +1,12 @@
 # Data sources, construction, and input format
 
-The processed sequences, propagated GO annotations, and fixed split assignments used by TriGO are released as FASTA and TSV files under [`data/`](data/). Large or third-party artifacts—including PDB structures, ontology snapshots, pretrained weights, feature caches, checkpoints, and experiment outputs—are intentionally excluded. Obtain those resources from their original providers and retain the provider's license and attribution information.
+The processed sequences, propagated GO annotations, and fixed split assignments used by TriGO are released as FASTA and TSV files under [`data/`](data/). The PDB archives are distributed separately as described below. Obtain ontology snapshots and pretrained weights from their original providers and retain the provider's license and attribution information.
 
 ## Reported datasets
 
 | Dataset | Primary source | Raw files used | Split policy |
 | --- | --- | --- | --- |
-| CAFA3 | [Official CAFA resource](https://biofunctionprediction.org/cafa/) and the CAFA3/AlphaFold benchmark package used in this study | `train_data_train_standardAA_1000_afdb.tsv`, `train_data_valid_standardAA_1000_afdb.tsv`, `test_data_standardAA_1000.tsv`, and `afdb_dir_cafa3.tar.gz` | Preserve the supplied train, validation, and test partitions. |
+| CAFA3 | [Official CAFA resource](https://biofunctionprediction.org/cafa/) and the [PredGO data release](https://doi.org/10.1093/bib/bbad243) | `train_data_train_standardAA_1000_afdb.tsv`, `train_data_valid_standardAA_1000_afdb.tsv`, `test_data_standardAA_1000.tsv`, and `afdb_dir_cafa3.tar.gz` | Preserve the supplied train, validation, and test partitions. |
 | GOA | Archived [UniProt-GOA](https://www.ebi.ac.uk/GOA/downloads.html) annotations and [UniProt](https://www.ebi.ac.uk/uniprot/download-center) sequences | GOA annotation records, UniProt FASTA sequences, and the matching GO ontology snapshot | Temporal split at 1 January 2023, followed by homology filtering and a cluster-aware validation split. |
 | CAFA5 | [CAFA5 Protein Function Prediction](https://www.kaggle.com/competitions/cafa-5-protein-function-prediction/data) | `Train/train_sequences.fasta`, `Train/train_terms.tsv`, and `go-basic.obo` | Seeded, label-safe 90/10 train/test split, followed by a 10% validation holdout from the training portion. |
 
@@ -40,6 +40,10 @@ CAFA5 starts from the competition's `Train/train_sequences.fasta` and `Train/tra
 Exact sequence matches to the CAFA3 and GOA datasets are excluded. Structures are retrieved by UniProt accession from the [AlphaFold Protein Structure Database](https://alphafold.ebi.ac.uk/), and records without a readable local PDB file are excluded. Annotations are then propagated through `is_a` and `part_of`, namespace roots are removed, and training-set frequency thresholds of 50, 10, and 10 proteins are applied to BP, MF, and CC, respectively.
 
 After feature-availability filtering, the released CAFA5 split contains 22,882 training, 2,532 validation, and 2,729 test proteins. These are the same proteins used for the reported TriGO evaluation, including the common 2,729-protein test set.
+
+## PDB structure downloads
+
+Download `goa_pdb.rar` and `cafa5_derived_pdb.rar` from the [Zenodo record](https://zenodo.org/records/24328142) (DOI [10.5281/zenodo.24328142](https://doi.org/10.5281/zenodo.24328142)). Extract the PDB files into `data/goa/pdb/` and `data/cafa5/pdb/`, respectively. For CAFA3, use `afdb_dir_cafa3.tar.gz` from the [PredGO data release](https://doi.org/10.1093/bib/bbad243) and place its PDB files in `data/cafa3/pdb/`.
 
 ## Common preprocessing rules
 
