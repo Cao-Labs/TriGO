@@ -57,7 +57,7 @@ python scripts/build_annotation_workbook.py \
 
 Repeat the command with `goa` or `cafa5` as needed. Generated `.xlsx` files are ignored by Git and are not part of the public data release.
 
-PDB structures, ontology snapshots, ESM-2 caches, GO embeddings, and model outputs are not included. Obtain structures and ontology files from the sources described in [DATA.md](../DATA.md), then generate cached inputs using the repository preprocessing scripts.
+Download the GOA and CAFA5-derived PDB files from [Zenodo](https://doi.org/10.5281/zenodo.24328142). See the [structure download instructions](../DATA.md#pdb-structure-downloads) for the CAFA3 archive and dataset paths. Obtain the ontology snapshots described in [DATA.md](../DATA.md) and generate cached inputs using the repository preprocessing scripts.
 
 ## Integrity check
 
