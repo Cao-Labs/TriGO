@@ -31,7 +31,7 @@ Proteins annotated before 1 January 2023 form the training-side pool, and protei
 
 Annotations are propagated with the same within-namespace hierarchy rules used for CAFA3. Terms are counted only in the training split and retained at minimum frequencies of 30 proteins for BP, 15 for MF, and 10 for CC. The final reported GOA split contains 24,076 training, 5,965 validation, and 10,652 test proteins before namespace-specific removal of proteins with no retained label.
 
-Keep the exact `go-basic.obo` used to build the processed GOA workbook and GO embedding bundle together with the dataset. Substituting a current ontology release can change term namespaces, ancestry, or obsolete-term handling.
+Use the GOA archive listed under [GO ontology files](#go-ontology-files). Substituting another ontology release can change term namespaces, ancestry, or obsolete-term handling.
 
 ### CAFA5
 
