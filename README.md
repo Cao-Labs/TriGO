@@ -104,6 +104,7 @@ python scripts/build_annotation_workbook.py \
 
 The annotation workbook requires `Entry`, `Sequence`, and `Gene Ontology IDs` columns; an optional `Split` column can define train, validation, and test partitions. PDB files are named `{Entry}.pdb`. See [DATA.md](DATA.md) for the complete schema.
 
+Before generating GO embeddings, extract the ontology archive in the corresponding dataset directory. For CAFA3, run `gunzip -k data/cafa3/go-basic.obo.gz` from the repository root. This creates `data/cafa3/go-basic.obo`. The [GO ontology setup](DATA.md#go-ontology-files) lists the paths for all three datasets.
 Generate GO embeddings:
 
 ```bash
