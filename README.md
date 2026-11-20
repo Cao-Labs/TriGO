@@ -61,7 +61,7 @@ TriGO/
   ABLATIONS.md
 ```
 
-The repository includes the processed FASTA sequences, GO-annotation TSV files, and fixed split assignments used in the experiments. PDB structures, ontology snapshots, pretrained weights, cached features, checkpoints, and experiment outputs must be obtained or generated separately.
+The repository includes processed FASTA sequences, GO-annotation TSV files, fixed split assignments, and a compressed GO ontology for each dataset under [`data/`](data/). See the [GO ontology setup](DATA.md#go-ontology-files) and the [PDB downloads](DATA.md#pdb-structure-downloads) to prepare the inputs.
 
 ## Data sources
 
